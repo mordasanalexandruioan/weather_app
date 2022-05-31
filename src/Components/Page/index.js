@@ -14,10 +14,14 @@ const Page=()=>{
     return (
       <>
       <Header/>
-    {!isLoading && <Main submitSearch={onSubmit}/>}
-    {isError && <Error message={isError}/>}
-    {isLoading && <Loader/>}
-    {isForecast && <Forecast/>}
+      {!isForecast && (
+        <section>
+          {!isLoading && <Main submitSearch={onSubmit}/>}
+          {isError && <Error message={isError}/>}
+          {isLoading && <Loader/>}
+       </section>)
+      }
+      {isForecast && <Forecast/>}
       </>
     );
 }
