@@ -13,6 +13,7 @@ const getUpcomingDays = (data) => {
       temperatureF: day.avgtemp_f,
       weekday: getWeekDay,
       gfhcgfhg,
+      fdghfhgjhgjhj,
     };
   });
 };
