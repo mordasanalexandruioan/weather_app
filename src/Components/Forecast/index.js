@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import CurrentDay from "../CurrentDay";
 import CurrentDayDescr from "../CurrentDayDescription";
-import UpcomingDayForecast from "../UpcomingDaysForecast";
+import UpcomingDaysForecast from "../UpcomingDaysForecast";
 
 const Forecast = ({ isForecast }) => {
-  console.log(isForecast.upcomingDaysForecast);
   return (
     <div
       style={{
@@ -17,7 +17,7 @@ const Forecast = ({ isForecast }) => {
     >
       <CurrentDay {...isForecast.currentDay} />
       <CurrentDayDescr {...isForecast.currentDayDescr} />
-      <UpcomingDayForecast {...isForecast.upcomingDaysForecast} />
+      <UpcomingDaysForecast days={isForecast.upcomingDaysForecast} />
     </div>
   );
 };

@@ -12,7 +12,6 @@ const Page = () => {
     submitRequest(value);
   };
 
-  console.log(isForecast);
   return (
     <>
       <Header />

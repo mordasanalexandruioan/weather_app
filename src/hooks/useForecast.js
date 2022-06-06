@@ -29,7 +29,7 @@ const useForecast = () => {
   const getherForecastData = (data) => {
     const currentDay = getCurrentDay(data, data.location.name);
     const currentDayDescr = getCurrentDayDescrp(data);
-    const upcomingDays = getUpcomingDays(data);
+    const upcomingDays = getUpcomingDays(data.forecast.forecastday);
 
     setForecast({ currentDay, currentDayDescr, upcomingDays });
     setLoading(false);
@@ -49,7 +49,6 @@ const useForecast = () => {
       if (!response.data) return;
       if (!data) return;
 
-      console.log({ data });
       getherForecastData(data);
     } catch (error) {
       setError("Location not found");
