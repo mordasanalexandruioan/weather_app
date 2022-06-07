@@ -10,7 +10,7 @@ const BASE_URL =
 const useForecast = () => {
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [isForecast, setForecast] = useState(null);
+  const [forecast, setForecast] = useState(null);
 
   const getWoeid = async (location) => {
     const { data } = await axios(`${BASE_URL}`, {
@@ -29,7 +29,7 @@ const useForecast = () => {
   const getherForecastData = (data) => {
     const currentDay = getCurrentDay(data, data.location.name);
     const currentDayDescr = getCurrentDayDescrp(data);
-    const upcomingDays = getUpcomingDays(data);
+    const upcomingDays = getUpcomingDays(data.forecast.forecastday);
 
     setForecast({ currentDay, currentDayDescr, upcomingDays });
     setLoading(false);
@@ -49,7 +49,6 @@ const useForecast = () => {
       if (!response.data) return;
       if (!data) return;
 
-      console.log({ data });
       getherForecastData(data);
     } catch (error) {
       setError("Location not found");
@@ -58,7 +57,7 @@ const useForecast = () => {
     }
   };
 
-  return { isError, isLoading, isForecast, submitRequest };
+  return { isError, isLoading, forecast, submitRequest };
 };
 
 export default useForecast;
