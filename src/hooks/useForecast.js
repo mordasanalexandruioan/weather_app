@@ -10,7 +10,7 @@ const BASE_URL =
 const useForecast = () => {
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [isForecast, setForecast] = useState(null);
+  const [forecast, setForecast] = useState(null);
 
   const getWoeid = async (location) => {
     const { data } = await axios(`${BASE_URL}`, {
@@ -57,7 +57,7 @@ const useForecast = () => {
     }
   };
 
-  return { isError, isLoading, isForecast, submitRequest };
+  return { isError, isLoading, forecast, submitRequest };
 };
 
 export default useForecast;

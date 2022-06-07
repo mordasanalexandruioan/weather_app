@@ -10,11 +10,13 @@ const UpcomingDaysForecastItem = ({
   <li>
     <img src={`${img}`} alt="icon" />
     <span>{weekday}</span>
-    <span>{temperatureC}</span>
+    <span>
+      {temperatureC}/{temperatureF}
+    </span>
   </li>
 );
 
-UpcomingDaysForecastItem.prototype = {
+UpcomingDaysForecastItem.propTypes = {
   weekday: PropTypes.string.isRequired,
   temperatureC: PropTypes.string.isRequired,
   temperatureF: PropTypes.string.isRequired,

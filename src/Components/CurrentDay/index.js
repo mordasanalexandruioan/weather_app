@@ -36,17 +36,17 @@ const CurrentDay = ({
   );
 };
 
-CurrentDay.prototype = {
+CurrentDay.propTypes = {
   weekday: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  temperatureC: PropTypes.string.isRequired,
-  temperatureF: PropTypes.string.isRequired,
+  temperatureC: PropTypes.number.isRequired,
+  temperatureF: PropTypes.number.isRequired,
   weatherIcon: PropTypes.string.isRequired,
-  maxtempC: PropTypes.string.isRequired,
-  maxtempF: PropTypes.string.isRequired,
-  mintempC: PropTypes.string.isRequired,
-  mintempF: PropTypes.string.isRequired,
+  maxtempC: PropTypes.number.isRequired,
+  maxtempF: PropTypes.number.isRequired,
+  mintempC: PropTypes.number.isRequired,
+  mintempF: PropTypes.number.isRequired,
 };
 
 export default CurrentDay;

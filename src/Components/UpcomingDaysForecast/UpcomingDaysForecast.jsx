@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 
 import UpcomingDaysForecastItem from "../UpcomingDaysForecastItem/UpcomingDaysForecastItem";
 
-const UpcomingDaysForecast = ({ days }) => {
+const UpcomingDaysForecast = ({ days }) => (
   <ul>
     {console.log(days)}
     {days.map((day) => (
       <UpcomingDaysForecastItem {...day} key={day.weekday} />
     ))}
-  </ul>;
-};
+  </ul>
+);
 
-UpcomingDaysForecast.prototype = {
-  params: PropTypes.array.isRequired,
+UpcomingDaysForecast.propTypes = {
+  days: PropTypes.array.isRequired,
 };
 
 export default UpcomingDaysForecast;
