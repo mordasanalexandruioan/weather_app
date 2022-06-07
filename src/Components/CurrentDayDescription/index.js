@@ -14,7 +14,7 @@ const CurrentDayDescr = ({ weatherDescription }) => {
   );
 };
 
-CurrentDayDescr.prototype = {
+CurrentDayDescr.propTypes = {
   weatherDescription: PropTypes.string.isRequired,
 };
 

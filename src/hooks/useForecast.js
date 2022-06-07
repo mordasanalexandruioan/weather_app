@@ -49,7 +49,8 @@ const useForecast = () => {
       if (!response.data) return;
       if (!data) return;
 
-      console.log({ data });
+      console.log("DATA", data);
+
       getherForecastData(data);
     } catch (error) {
       setError("Location not found");

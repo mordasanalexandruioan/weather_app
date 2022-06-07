@@ -16,7 +16,7 @@ const Error = ({ message }) => {
   );
 };
 
-Error.prototype = {
+Error.propTypes = {
   message: PropTypes.string,
 };
 
