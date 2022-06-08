@@ -23,6 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint src -c eslintrc.json --ext js,jsx",
+    "fix": "npm run lint --fix",
     "prepare": "husky install"
   },
   "eslintConfig": {

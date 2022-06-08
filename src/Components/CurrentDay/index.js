@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { SettingsContext } from "../../Context/settingsContext";
 
 const CurrentDay = ({
   weekday,
@@ -23,65 +24,67 @@ const CurrentDay = ({
   mintempF,
 }) => {
   return (
-    <section
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: ".5em",
-        color: "#FAFAFA",
-      }}
-    >
-      <h2>{weekday}</h2>
-      <span>{date}</span>
-      <h2>
-        {name}
-        <span
-          style={{
-            fontSize: ".8rem",
-          }}
-        >
-          /{location}
-        </span>
-      </h2>
-      <div
+    <SettingsContext.Consumer>
+      <section
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: ".5em",
+          color: "#FAFAFA",
         }}
       >
-        <h1>{temperatureC}°C</h1>
-        <img src={weatherIcon} />
-      </div>
-      <span>{maxtempC}°C</span>
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: ".6em",
-          fontWeight: "bold",
-        }}
-      >
-        Air Quality
-        <ul
+        <h2>{weekday}</h2>
+        <span>{date}</span>
+        <h2>
+          {name}
+          <span
+            style={{
+              fontSize: ".8rem",
+            }}
+          >
+            /{location}
+          </span>
+        </h2>
+        <div
           style={{
-            width: "370px",
-            listStyle: "none",
             display: "flex",
             flexDirection: "row",
-            padding: "0",
-            justifyContent: "space-evenly",
-            margin: ".3em 0",
           }}
         >
-          <li>CO: {airQualityCO}</li>
-          <li>NO2: {airQualityNO2}</li>
-          <li>O3: {airQualityO3}</li>
-          <li>PM10: {airQualityPM10}</li>
-          <li>SO2: {airQualitySO2}</li>
-        </ul>
-      </div>
-    </section>
+          <h1>{temperatureC}°C</h1>
+          <img src={weatherIcon} />
+        </div>
+        <span>{maxtempC}°C</span>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: ".6em",
+            fontWeight: "bold",
+          }}
+        >
+          Air Quality
+          <ul
+            style={{
+              width: "370px",
+              listStyle: "none",
+              display: "flex",
+              flexDirection: "row",
+              padding: "0",
+              justifyContent: "space-evenly",
+              margin: ".3em 0",
+            }}
+          >
+            <li>CO: {airQualityCO}</li>
+            <li>NO2: {airQualityNO2}</li>
+            <li>O3: {airQualityO3}</li>
+            <li>PM10: {airQualityPM10}</li>
+            <li>SO2: {airQualitySO2}</li>
+          </ul>
+        </div>
+      </section>
+    </SettingsContext.Consumer>
   );
 };
 
