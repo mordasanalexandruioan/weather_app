@@ -5,8 +5,10 @@ export const SettingsContext = createContext();
 class SettingsContextProvider extends Component {
   state = {
     tempStatus: true,
-    tempC: "celsius",
-    tempF: "fahrenheit",
+    windStatus: true,
+    precipStatus: true,
+    pressureStatus: true,
+    visbilityStatus: true,
   };
   render() {
     return (

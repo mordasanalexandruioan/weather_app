@@ -14,6 +14,8 @@ const CurrentDay = ({
   airQualitySO2,
   precipIN,
   precipMM,
+  windKPH,
+  windMPH,
   moonPhase,
   temperatureC,
   temperatureF,
@@ -22,68 +24,91 @@ const CurrentDay = ({
   maxtempF,
   mintempC,
   mintempF,
+  visibilityKM,
+  visibilityMIL,
 }) => {
   return (
     <SettingsContext.Consumer>
-      <section
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: ".5em",
-          color: "#FAFAFA",
-        }}
-      >
-        <h2>{weekday}</h2>
-        <span>{date}</span>
-        <h2>
-          {name}
-          <span
+      {(context) => {
+        const {
+          tempStatus,
+          windStatus,
+          precipStatus,
+          pressureStatus,
+          visbilityStatus,
+        } = context;
+        const tempS = tempStatus ? `${temperatureC}°C` : `${temperatureF}°F`;
+        const precipS = precipStatus ? `${precipMM} mm` : `${precipIN} in`;
+        const visibilityS = visbilityStatus
+          ? `${visibilityKM} km`
+          : `${visibilityMIL} mil`;
+        const windS = windStatus ? `${windKPH} km/h` : `${windMPH} mph`;
+        return (
+          <section
             style={{
-              fontSize: ".8rem",
-            }}
-          >
-            /{location}
-          </span>
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          <h1>{temperatureC}°C</h1>
-          <img src={weatherIcon} />
-        </div>
-        <span>{maxtempC}°C</span>
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: ".6em",
-            fontWeight: "bold",
-          }}
-        >
-          Air Quality
-          <ul
-            style={{
-              width: "370px",
-              listStyle: "none",
               display: "flex",
-              flexDirection: "row",
-              padding: "0",
-              justifyContent: "space-evenly",
-              margin: ".3em 0",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: ".5em",
+              color: "#FAFAFA",
             }}
           >
-            <li>CO: {airQualityCO}</li>
-            <li>NO2: {airQualityNO2}</li>
-            <li>O3: {airQualityO3}</li>
-            <li>PM10: {airQualityPM10}</li>
-            <li>SO2: {airQualitySO2}</li>
-          </ul>
-        </div>
-      </section>
+            <h2>{weekday}</h2>
+            <span>{date}</span>
+            <h2>
+              {name}
+              <span
+                style={{
+                  fontSize: ".8rem",
+                }}
+              >
+                /{location}
+              </span>
+            </h2>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <span>{tempS}</span>
+              <img src={weatherIcon} alt="" />
+            </div>
+            <span>{maxtempC}°C</span>
+            <span>{precipS}</span>
+            <span>Visibility range: {visibilityS}</span>
+            <span>Wind speed: {windS}</span>
+            <div
+              style={{
+                textAlign: "center",
+                marginTop: ".6em",
+                fontWeight: "bold",
+              }}
+            >
+              Air Quality
+              <ul
+                style={{
+                  width: "370px",
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "row",
+                  padding: "0",
+                  justifyContent: "space-evenly",
+                  margin: ".3em 0",
+                }}
+              >
+                <li>CO: {airQualityCO}</li>
+                <li>NO2: {airQualityNO2}</li>
+                <li>O3: {airQualityO3}</li>
+                <li>PM10: {airQualityPM10}</li>
+                <li>SO2: {airQualitySO2}</li>
+              </ul>
+            </div>
+          </section>
+        );
+      }}
     </SettingsContext.Consumer>
   );
 };
@@ -100,6 +125,8 @@ CurrentDay.propTypes = {
   airQualitySO2: PropTypes.number.isRequired,
   precipIN: PropTypes.number.isRequired,
   precipMM: PropTypes.number.isRequired,
+  windKPH: PropTypes.number.isRequired,
+  windMPH: PropTypes.number.isRequired,
   moonPhase: PropTypes.string.isRequired,
   temperatureC: PropTypes.number.isRequired,
   temperatureF: PropTypes.number.isRequired,
@@ -108,6 +135,8 @@ CurrentDay.propTypes = {
   maxtempF: PropTypes.number.isRequired,
   mintempC: PropTypes.number.isRequired,
   mintempF: PropTypes.number.isRequired,
+  visibilityKM: PropTypes.number.isRequired,
+  visibilityMIL: PropTypes.number.isRequired,
 };
 
 export default CurrentDay;

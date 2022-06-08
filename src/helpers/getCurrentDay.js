@@ -10,8 +10,10 @@ const getCurrentDay = (data, title) => ({
   airQualityO3: Math.round(data.current.air_quality.o3),
   airQualityPM10: Math.round(data.current.air_quality.pm10),
   airQualitySO2: Math.round(data.current.air_quality.so2),
-  precipIN: data.current.precip_in,
-  precipMM: data.current.precip_mm,
+  precipIN: data.forecast.forecastday[0].day.totalprecip_in,
+  precipMM: data.forecast.forecastday[0].day.totalprecip_mm,
+  windKPH: data.current.wind_kph,
+  windMPH: data.current.wind_mph,
   moonPhase: data.forecast.forecastday[0].astro.moon_phase,
   temperatureC: data.forecast.forecastday[0].day.avgtemp_c,
   temperatureF: data.forecast.forecastday[0].day.avgtemp_f,
@@ -20,6 +22,8 @@ const getCurrentDay = (data, title) => ({
   maxtempF: data.forecast.forecastday[0].day.maxtemp_f,
   mintempC: data.forecast.forecastday[0].day.mintemp_c,
   mintempF: data.forecast.forecastday[0].day.mintemp_f,
+  visibilityKM: data.current.vis_km,
+  visibilityMIL: data.current.vis_miles,
 });
 
 export default getCurrentDay;
