@@ -1,10 +1,13 @@
 import "./App.css";
 import Page from "./Components/Page";
+import SettingsContextProvider from "./Context/settingsContext";
 
 function App() {
   return (
     <>
-      <Page />
+      <SettingsContextProvider>
+        <Page />
+      </SettingsContextProvider>
     </>
   );
 }
