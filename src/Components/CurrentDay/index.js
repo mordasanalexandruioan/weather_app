@@ -16,6 +16,8 @@ const CurrentDay = ({
   precipMM,
   windKPH,
   windMPH,
+  pressureIN,
+  pressureMB,
   moonPhase,
   temperatureC,
   temperatureF,
@@ -43,6 +45,9 @@ const CurrentDay = ({
           ? `${visibilityKM} km`
           : `${visibilityMIL} mil`;
         const windS = windStatus ? `${windKPH} km/h` : `${windMPH} mph`;
+        const pressureS = pressureStatus
+          ? `${pressureMB} mb`
+          : `${pressureIN} in`;
         return (
           <section
             style={{
@@ -80,6 +85,7 @@ const CurrentDay = ({
             <span>{precipS}</span>
             <span>Visibility range: {visibilityS}</span>
             <span>Wind speed: {windS}</span>
+            <span>Air pressure: {pressureS}</span>
             <div
               style={{
                 textAlign: "center",
@@ -127,6 +133,8 @@ CurrentDay.propTypes = {
   precipMM: PropTypes.number.isRequired,
   windKPH: PropTypes.number.isRequired,
   windMPH: PropTypes.number.isRequired,
+  pressureIN: PropTypes.number.isRequired,
+  pressureMB: PropTypes.number.isRequired,
   moonPhase: PropTypes.string.isRequired,
   temperatureC: PropTypes.number.isRequired,
   temperatureF: PropTypes.number.isRequired,

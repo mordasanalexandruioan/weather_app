@@ -14,6 +14,8 @@ const getCurrentDay = (data, title) => ({
   precipMM: data.forecast.forecastday[0].day.totalprecip_mm,
   windKPH: data.current.wind_kph,
   windMPH: data.current.wind_mph,
+  pressureIN: data.current.pressure_in,
+  pressureMB: data.current.pressure_mb,
   moonPhase: data.forecast.forecastday[0].astro.moon_phase,
   temperatureC: data.forecast.forecastday[0].day.avgtemp_c,
   temperatureF: data.forecast.forecastday[0].day.avgtemp_f,
