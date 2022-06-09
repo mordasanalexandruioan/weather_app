@@ -10,9 +10,21 @@ class SettingsContextProvider extends Component {
     pressureStatus: true,
     visbilityStatus: true,
   };
+  temperatureSelect = () => {
+    this.setState({ tempStatus: !this.state.tempStatus });
+  };
+  windSelect = () => {
+    this.setState({ windStatus: !this.state.windStatus });
+  };
   render() {
     return (
-      <SettingsContext.Provider value={{ ...this.state }}>
+      <SettingsContext.Provider
+        value={{
+          ...this.state,
+          temperatureSelect: this.temperatureSelect,
+          windSelect: this.windSelect,
+        }}
+      >
         {this.props.children}
       </SettingsContext.Provider>
     );
