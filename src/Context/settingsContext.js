@@ -26,6 +26,7 @@ class SettingsContextProvider extends Component {
           ...this.state,
           temperatureSelect: this.temperatureSelect,
           windSelect: this.windSelect,
+          precipSelect: this.precipSelect,
         }}
       >
         {this.props.children}
