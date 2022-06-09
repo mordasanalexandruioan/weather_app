@@ -22,6 +22,9 @@ class SettingsContextProvider extends Component {
   pressSelect = () => {
     this.setState({ pressureStatus: !this.state.pressureStatus });
   };
+  visibSelect = () => {
+    this.setState({ visbilityStatus: !this.state.visbilityStatus });
+  };
   render() {
     return (
       <SettingsContext.Provider
@@ -31,6 +34,7 @@ class SettingsContextProvider extends Component {
           windSelect: this.windSelect,
           precipSelect: this.precipSelect,
           pressSelect: this.pressSelect,
+          visibSelect: this.visibSelect,
         }}
       >
         {this.props.children}
