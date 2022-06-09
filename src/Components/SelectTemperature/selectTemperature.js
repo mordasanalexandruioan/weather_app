@@ -1,26 +1,20 @@
 import React, { Component } from "react";
 import { SettingsContext } from "../../Context/settingsContext";
-import Button from "@mui/material/Button";
 
 class SelectTemperature extends Component {
   static contextType = SettingsContext;
   render() {
     const { temperatureSelect } = this.context;
     const changeTemp = () => {
-      console.log("temp");
-      let btn = document.querySelector("button");
+      let btn = document.getElementsByTagName("BUTTON")[0];
       if (btn.textContent === "Fahrenheit") btn.textContent = "Celsius";
       else btn.textContent = "Fahrenheit";
     };
-    const selectNchange = () => {
+    const selectNchangeT = () => {
       temperatureSelect();
       changeTemp();
     };
-    return (
-      <Button variant="outlined" onClick={selectNchange}>
-        Fahrenheit
-      </Button>
-    );
+    return <button onClick={selectNchangeT}>Fahrenheit</button>;
   }
 }
 

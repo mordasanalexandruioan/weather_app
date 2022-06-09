@@ -16,6 +16,9 @@ class SettingsContextProvider extends Component {
   windSelect = () => {
     this.setState({ windStatus: !this.state.windStatus });
   };
+  precipSelect = () => {
+    this.setState({ precipStatus: !this.state.precipStatus });
+  };
   render() {
     return (
       <SettingsContext.Provider

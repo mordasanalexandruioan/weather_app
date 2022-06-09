@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { SettingsContext } from "../../Context/settingsContext";
-import Button from "@mui/material/Button";
 
 class SelectWind extends Component {
   static contextType = SettingsContext;
@@ -8,18 +7,20 @@ class SelectWind extends Component {
     const { windSelect } = this.context;
     const changeWind = () => {
       console.log("wind");
-      let btn = document.querySelector("button");
-      if (btn.textContent === "Mph") btn.textContent = "Kph";
+      let btn = document.getElementsByTagName("BUTTON")[1];
+      if (btn.textContent === "Mph" && btn.className === "btn windSt")
+        btn.textContent = "Kph";
       else btn.textContent = "Mph";
     };
-    const selectNchange = () => {
+    const selectNchangeW = () => {
       windSelect();
       changeWind();
+      console.log(changeWind);
     };
     return (
-      <Button variant="outlined" onClick={selectNchange}>
+      <button className="btn windSt" onClick={selectNchangeW}>
         Mph
-      </Button>
+      </button>
     );
   }
 }
