@@ -19,6 +19,9 @@ class SettingsContextProvider extends Component {
   precipSelect = () => {
     this.setState({ precipStatus: !this.state.precipStatus });
   };
+  pressSelect = () => {
+    this.setState({ pressureStatus: !this.state.pressureStatus });
+  };
   render() {
     return (
       <SettingsContext.Provider
@@ -27,6 +30,7 @@ class SettingsContextProvider extends Component {
           temperatureSelect: this.temperatureSelect,
           windSelect: this.windSelect,
           precipSelect: this.precipSelect,
+          pressSelect: this.pressSelect,
         }}
       >
         {this.props.children}
