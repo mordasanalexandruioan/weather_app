@@ -1,10 +1,23 @@
 import "./App.css";
 import Page from "./Components/Page";
+import SelectPrecipitation from "./Components/SelectPrecipitation/selectPrecipitation";
+import SelectPressure from "./Components/SelectPressure/selectPressure";
+import SelectTemperature from "./Components/SelectTemperature/selectTemperature";
+import SelectVisibility from "./Components/SelectVisibility/selectVisibility";
+import SelectWind from "./Components/SelectWind/selectWind";
+import SettingsContextProvider from "./Context/settingsContext";
 
 function App() {
   return (
     <>
-      <Page />
+      <SettingsContextProvider>
+        <SelectTemperature />
+        <SelectWind />
+        <SelectPrecipitation />
+        <SelectPressure />
+        <SelectVisibility />
+        <Page />
+      </SettingsContextProvider>
     </>
   );
 }
