@@ -12,6 +12,7 @@ class SettingsContextProvider extends Component {
   };
   temperatureSelect = () => {
     this.setState({ tempStatus: !this.state.tempStatus });
+    localStorage.setItem("temp", JSON.stringify(this.state.tempStatus));
   };
   windSelect = () => {
     this.setState({ windStatus: !this.state.windStatus });

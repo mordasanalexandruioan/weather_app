@@ -39,7 +39,14 @@ const CurrentDay = ({
           pressureStatus,
           visbilityStatus,
         } = context;
-        const tempS = tempStatus ? `${temperatureC}°C` : `${temperatureF}°F`;
+        const storageTempS = JSON.parse(localStorage.getItem("temp"));
+        const tempS = () => {
+          if (storageTempS === null) {
+            if (tempStatus) return `${temperatureC}°C`;
+            else return `${temperatureF}°F`;
+          } else if (storageTempS) return `${temperatureF}°F`;
+          else return `${temperatureC}°C`;
+        };
         const precipS = precipStatus ? `${precipMM} mm` : `${precipIN} in`;
         const visibilityS = visbilityStatus
           ? `${visibilityKM} km`
@@ -78,7 +85,7 @@ const CurrentDay = ({
                 alignItems: "center",
               }}
             >
-              <span>{tempS}</span>
+              <span>{tempS()}</span>
               <img src={weatherIcon} alt="" />
             </div>
             <span>{maxtempC}°C</span>
