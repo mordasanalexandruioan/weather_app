@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { SettingsContext } from "../../Context/settingsContext";
+import { tempS } from "../../helpers/saveSettings";
 
 const CurrentDay = ({
   weekday,
@@ -40,13 +41,6 @@ const CurrentDay = ({
           visbilityStatus,
         } = context;
         const storageTempS = JSON.parse(localStorage.getItem("temp"));
-        const tempS = () => {
-          if (storageTempS === null) {
-            if (tempStatus) return `${temperatureC}°C`;
-            else return `${temperatureF}°F`;
-          } else if (storageTempS) return `${temperatureF}°F`;
-          else return `${temperatureC}°C`;
-        };
         const precipS = precipStatus ? `${precipMM} mm` : `${precipIN} in`;
         const visibilityS = visbilityStatus
           ? `${visibilityKM} km`
@@ -85,7 +79,9 @@ const CurrentDay = ({
                 alignItems: "center",
               }}
             >
-              <span>{tempS()}</span>
+              <span>
+                {tempS(storageTempS, tempStatus, temperatureC, temperatureF)}
+              </span>
               <img src={weatherIcon} alt="" />
             </div>
             <span>{maxtempC}°C</span>
